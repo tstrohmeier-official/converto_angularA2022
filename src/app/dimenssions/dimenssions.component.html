@@ -1,0 +1,65 @@
+<!-- Fichier: dimenssions.component.html
+Dev: Tom Strohmeier
+Date: 10/21/2022 -->
+
+<div class="row pt-3" style="background-color: lightyellow;">
+    <div class="col-12">
+        <h1><img src="assets/dimensions.png" alt="img_dim" width="48px">Dimensions</h1>
+    </div>
+    <div class="row pb-3">
+        <!-- Section sélection mesure d'entrée -->
+        <div class="col-3">
+            <label>Entrée: </label>
+            <select [(ngModel)]="Entree" name="entree">
+                <option *ngFor="let d of this.Dimensions" [ngValue]="d">{{d.str}}</option>
+            </select>
+        </div>
+        <!-- Section sélection mesure de sortie -->
+        <div class="col-3">
+            <label>Sortie: </label>
+            <select [(ngModel)]="Sortie" name="sortie">
+                <option *ngFor="let d of this.Dimensions" [ngValue]="d">{{d.str}}</option>
+            </select>
+        </div>
+        <!-- Section sélection de la dimension -->
+        <div class="col-3">
+            <label>Dimension: </label>
+            <select [(ngModel)]="DDSelect" name="dimension">
+                <option *ngFor="let t of this.DDimension">{{t}}</option>
+            </select>
+        </div>
+        <!-- Section de sélection de précision -->
+        <div class="col-3">
+            <label>Précision: </label>
+            <select [(ngModel)]="PreciSelect" name="precision">
+                <option *ngFor="let p of this.Precisions">{{p}}</option>
+            </select>
+        </div>
+    </div>
+    <!-- Section 1D -->
+    <div class="row pt-3 pb-2" style="border-top:1px solid black;">
+        <label class="col-2">Longueur:</label>
+        <input class="col-1" type="number" [(ngModel)]="Longueur" name="longueur">
+        {{this.Entree.str}} =
+        <span class="col-8" style="font-weight: bold;">{{convertir1D(1)}} {{this.Sortie.str}}
+        </span>
+    </div>
+    <!-- Section 2D -->
+    <div *ngIf="this.DDSelect == 2 || this.DDSelect == 3" class="row pb-2">
+        <label class="col-2">Largeur:</label>
+        <input class="col-1" type="number" [(ngModel)]="Largeur" name="largeur">
+        {{this.Entree.str}} =
+        <span class="col-8" style="font-weight: bold;">{{convertir1D(2)}} {{this.Sortie.str}}
+        </span>
+        <p *ngIf="this.DDSelect == 2" style="font-weight:bold;">{{convertir2D()}}</p>
+    </div>
+    <!-- Section 3D -->
+    <div *ngIf="this.DDSelect == 3" class="row pb-2">
+        <label class="col-2">Profondeur:</label>
+        <input class="col-1" type="number" [(ngModel)]="Profondeur" name="profondeur">
+        {{this.Entree.str}} =
+        <span class="col-8" style="font-weight: bold;">{{convertir1D(3)}} {{this.Sortie.str}}
+        </span>
+        <p *ngIf="this.DDSelect == 3" style="font-weight:bold;">{{convertir3D()}}</p>
+    </div>
+</div>

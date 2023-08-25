@@ -1,0 +1,27 @@
+<!--
+--------------------------------------------------------
+Fichier: app.component.html
+Dev: Tom Strohmeier
+Date: 10/13/2022
+--------------------------------------------------------
+-->
+
+<!-- Barre d'entète -->
+<div class="container-fluid">
+  <div class="row" style="color: white; border-bottom: 1px solid black;">
+    <h1>Converto</h1>
+    <p>par Tom Strohmeier</p>
+  </div>
+  <!-- Menu de bouttons -->
+  <div class="row" style="background-color: lightseagreen; border-bottom: 1px solid black;">
+    <button (click)="setActiveTab(1)" class="btnMenu btn col-3 btn-outline-primary">Dimensions</button>
+    <button (click)="setActiveTab(2)" class="btnMenu btn col-3 btn-outline-primary">Poids</button>
+    <button (click)="setActiveTab(3)" class="btnMenu btn col-3 btn-outline-primary">Températures</button>
+    <button (click)="setActiveTab(4)" class="btnMenu btn col-3 btn-outline-primary">Monnaie</button>
+  </div>
+  <!-- Section des components -->
+  <app-dimenssions *ngIf="this.activeTab === 1"></app-dimenssions>
+  <app-poids *ngIf="this.activeTab === 2"></app-poids>
+  <app-temperatures *ngIf="this.activeTab === 3"></app-temperatures>
+  <app-monnaie *ngIf="this.activeTab === 4"></app-monnaie>
+</div>

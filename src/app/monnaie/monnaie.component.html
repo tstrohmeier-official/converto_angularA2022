@@ -1,0 +1,38 @@
+<!-- Fichier: monnaie.component.html
+Dev: Tom Strohmeier
+Date: 10/21/2022 -->
+
+<div class="row pt-3" style="background-color: #ffb6c1;">
+    <div class="col-12">
+        <h1><img src="assets/monnaie.png" alt="img_money" width="48px">Monnaie</h1>
+    </div>
+    <div class="row pb-3">
+        <!-- Section sélection mesure d'entrée -->
+        <div class="col-3">
+            <label>Entrée:</label>
+            <select [(ngModel)]="Entree" name="entree">
+                <option *ngFor="let item of this.Data" [ngValue]="item">{{item.an}}</option>
+            </select>
+        </div>
+        <!-- Section sélection mesure de sortie -->
+        <div class="col-3">
+            <label>Sortie: </label>
+            <select [(ngModel)]="Sortie" name="sortie">
+                <option *ngFor="let item of this.Data.reverse()" [ngValue]="item">{{item.an}}</option>
+            </select>
+        </div>
+        <!-- Section sélection de la précision -->
+        <div class="col-3">
+            <label>Précision: </label>
+            <select [(ngModel)]="PreciSelect" name="precision">
+                <option *ngFor="let p of this.Precisions">{{p}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row pt-3 pb-2" style="border-top:1px solid black;">
+        <input class="col-1" style="margin-right: 5px;" type="number" [(ngModel)]="UserInput" name="userInput" />
+        $ de {{this.Entree.an}} =
+        <span class="col-2" style="font-weight: bold;">{{convertir()}}$ en {{this.Sortie.an}}.
+        </span>
+    </div>
+</div>

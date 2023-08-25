@@ -1,0 +1,18 @@
+/* Fichier: app.component.css
+Dev: Tom Strohmeier
+Date: 10/21/2022 */
+
+/* -------------------------------------
+
+------------------------------------- */
+
+.btnMenu {
+    border-right: 1px solid black;
+    border-radius: 0;
+    color: white;
+    font-weight: bold;
+}
+
+/* -------------------------------------
+
+------------------------------------- */

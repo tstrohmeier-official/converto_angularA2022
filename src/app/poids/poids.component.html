@@ -1,0 +1,37 @@
+<!-- Fichier: poids.component.html
+Dev: Tom Strohmeier
+Date: 10/21/2022 -->
+
+<div class="row pt-3" style="background-color: #add8e6;">
+    <div class="col-12">
+        <h1><img src="assets/poids.png" alt="img_poid" width="48px">Poids</h1>
+    </div>
+    <div class="row pb-3">
+        <!-- Section sélection de la mesure d'entrée -->
+        <div class="col-3">
+            <label>Entrée: </label>
+            <select [(ngModel)]="Entree" name="entree">
+                <option *ngFor="let d of this.Poids" [ngValue]="d">{{d.str}}</option>
+            </select>
+        </div>
+        <!-- Section sélection de la mesure de sortie -->
+        <div class="col-3">
+            <label>Sortie: </label>
+            <select [(ngModel)]="Sortie" name="entree">
+                <option *ngFor="let d of this.Poids" [ngValue]="d">{{d.str}}</option>
+            </select>
+        </div>
+        <!-- Section sélection de la précision -->
+        <div class="col-3">
+            <label>Précision: </label>
+            <select [(ngModel)]="PreciSelect" name="entree">
+                <option *ngFor="let d of this.Precisions">{{d}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row pt-3 pb-2" style="border-top:1px solid black;">
+        <input class="col-1" style="margin-right: 5px;" type="number" [(ngModel)]="UserInput" name="userInput">
+        {{Entree.str}} = <span class="col-2" style="font-weight: bold;">
+            {{convertir()}} {{Sortie.str}}.</span>
+    </div>
+</div>
